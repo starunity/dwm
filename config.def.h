@@ -27,7 +27,10 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"st", NULL,
+	"feh", "--bg-fill", "/home/star/i3-Config/temp/iss022e062672.jpg", NULL,
+        "picom", NULL,
+        "fcitx5", NULL,
+        "/home/star/.config/albert/runalbert.zsh", NULL,
 	NULL /* terminate */
 };
 
