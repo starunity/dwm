@@ -79,6 +79,8 @@ static const char *termcmd[]         = { "st", NULL };
 static const char scratchpadname[]   = "scratchpad";
 static const char *scratchpadcmd[]   = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
+static const char *rofidmenucmd[]    = { "rofi", "-show", "drun", NULL };
+
 static const char *volumetoggle[]    = { "/home/star/.config/dwm-config/scripts/dwm-volumetoggle.sh", NULL };
 static const char *volumeup[]        = { "/home/star/.config/dwm-config/scripts/dwm-volumeup.sh", NULL };
 static const char *volumedown[]      = { "/home/star/.config/dwm-config/scripts/dwm-volumedown.sh", NULL };
@@ -89,6 +91,7 @@ static const char *brightnessdown[]  = { "xbacklight", "-5", NULL };
 static Key keys[] = {
 	/* modifier                     key                       function        argument */
 	{ MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
+	{ Mod1Mask,                     XK_space,                 spawn,          {.v = rofidmenucmd } },
 	{ MODKEY,                       XK_Return,                spawn,          {.v = termcmd } },
 	{ 0,                            XF86XK_AudioMute,         spawn,          {.v = volumetoggle } },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = volumeup } },
