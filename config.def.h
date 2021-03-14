@@ -88,6 +88,9 @@ static const char *volumedown[]      = { "/home/star/.config/dwm-config/scripts/
 static const char *brightnessup[]    = { "xbacklight", "+5", NULL };
 static const char *brightnessdown[]  = { "xbacklight", "-5", NULL };
 
+static const char *trayertoggle[]    = { "/home/star/.config/dwm-config/scripts/dwm-trayertoggle.sh", NULL };
+static const char *screenkeytoggle[] = { "/home/star/.config/dwm-config/scripts/dwm-screenkeytoggle.sh", NULL };
+
 static Key keys[] = {
 	/* modifier                     key                       function        argument */
 	{ MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
@@ -100,6 +103,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = brightnessdown } },
 	{ MODKEY,                       XK_F12,                   spawn,          {.v = brightnessup } },
 	{ MODKEY,                       XK_F11,                   spawn,          {.v = brightnessdown } },
+	{ MODKEY|ShiftMask,             XK_t,                     spawn,          {.v = trayertoggle } },
+	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = screenkeytoggle } },
 	{ MODKEY,                       XK_y,  	                  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,                     togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,                     rotatestack,    {.i = +1 } },
