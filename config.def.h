@@ -13,18 +13,28 @@ static const char col_gray1[]         = "#222222";
 static const char col_gray2[]         = "#444444";
 static const char col_gray3[]         = "#bbbbbb";
 static const char col_gray4[]         = "#eeeeee";
-static const char col_cyan[]          = "#005577";
+static const char col_cyan[]          = "#444444";
 static const unsigned int baralpha    = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	/*                   fg         bg         border   */
+	[SchemeNorm]     = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]      = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeStatus]   = { col_gray3, col_gray1, "#000000" }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000" }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm] = { col_gray3, col_gray1, "#000000" }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_gray4, col_gray1, "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm] = { col_gray3, col_gray1, "#000000" }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 static const unsigned int alphas[][3]      = {
-	/*               fg      bg        border     */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	/*                   fg      bg        border     */
+	[SchemeNorm]     = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]      = { OPAQUE, baralpha, borderalpha },
+	[SchemeStatus]   = { OPAQUE, baralpha, borderalpha }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { OPAQUE, baralpha, borderalpha }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 static const char *const autostart[] = {
