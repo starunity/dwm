@@ -43,6 +43,7 @@ static const char *const autostart[] = {
         "fcitx5", NULL,
 	"/home/star/.config/dwm-config/scripts/dwm-statusbar-autorefresh.sh", NULL,
         "/home/star/.config/albert/runalbert.zsh", NULL,
+	"/usr/bin/polkit-dumb-agent", NULL,
 	NULL /* terminate */
 };
 
