@@ -41,7 +41,7 @@ static const char *const autostart[] = {
 	"feh", "--bg-fill", "/home/star/i3-Config/temp/iss022e062672.jpg", NULL,
         "picom", NULL,
         "fcitx5", NULL,
-	"/home/star/.config/dwm-config/scripts/dwm-statusbar-autorefresh.sh", NULL,
+	"/home/star/.config/dwm-scripts/dwm-statusbar-autorefresh.sh", NULL,
         "/home/star/.config/albert/runalbert.zsh", NULL,
 	"/usr/bin/polkit-dumb-agent", NULL,
 	NULL /* terminate */
@@ -93,15 +93,15 @@ static const char *scratchpadcmd[]   = { "st", "-t", scratchpadname, "-g", "120x
 
 static const char *rofidmenucmd[]    = { "rofi", "-show", "drun", NULL };
 
-static const char *volumetoggle[]    = { "/home/star/.config/dwm-config/scripts/dwm-volumetoggle.sh", NULL };
-static const char *volumeup[]        = { "/home/star/.config/dwm-config/scripts/dwm-volumeup.sh", NULL };
-static const char *volumedown[]      = { "/home/star/.config/dwm-config/scripts/dwm-volumedown.sh", NULL };
+static const char *volumetoggle[]    = { "/home/star/.config/dwm-scripts/dwm-volumetoggle.sh", NULL };
+static const char *volumeup[]        = { "/home/star/.config/dwm-scripts/dwm-volumeup.sh", NULL };
+static const char *volumedown[]      = { "/home/star/.config/dwm-scripts/dwm-volumedown.sh", NULL };
 
 static const char *brightnessup[]    = { "xbacklight", "+5", NULL };
 static const char *brightnessdown[]  = { "xbacklight", "-5", NULL };
 
-static const char *trayertoggle[]    = { "/home/star/.config/dwm-config/scripts/dwm-trayertoggle.sh", NULL };
-static const char *screenkeytoggle[] = { "/home/star/.config/dwm-config/scripts/dwm-screenkeytoggle.sh", NULL };
+static const char *trayertoggle[]    = { "/home/star/.config/dwm-scripts/dwm-trayertoggle.sh", NULL };
+static const char *screenkeytoggle[] = { "/home/star/.config/dwm-scripts/dwm-screenkeytoggle.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                       function        argument */
