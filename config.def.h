@@ -42,8 +42,6 @@ static const char *const autostart[] = {
         "picom", NULL,
         "fcitx5", NULL,
 	"/home/star/.config/dwm-scripts/dwm-statusbar-autorefresh.sh", NULL,
-        "/home/star/.config/albert/runalbert.zsh", NULL,
-	"/usr/bin/polkit-dumb-agent", NULL,
 	NULL /* terminate */
 };
 
