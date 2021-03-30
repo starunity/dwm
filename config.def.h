@@ -38,9 +38,10 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"feh", "--bg-fill", "/home/star/dotfiles/backgroud/iss022e062672.jpg", NULL,
         "picom", NULL,
+	"feh", "--bg-fill", "/home/star/dotfiles/backgroud/iss022e062672.jpg", NULL,
         "fcitx5", NULL,
+        "amixer", "set", "Master", "mute", NULL,
 	"/home/star/.config/dwm-scripts/dwm-statusbar-autorefresh.sh", NULL,
 	NULL /* terminate */
 };
