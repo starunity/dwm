@@ -77,14 +77,15 @@ outputDisChargingIcon(){
 }
 
 batteryStatus(){
-	battery_status_line=`acpi | grep "Battery 0"`
-	if [ -n "$battery_status_line" ]; then
-		charging_status=`echo $battery_status_line | awk -F'[, ]' '{print $3}'`
-		battery=`echo $battery_status_line | sed -r 's/.* (.*)%.*/\1/'`
+	if [ -f /sys/class/power_supply/BAT0/status ]; then
+		charging_status=`cat /sys/class/power_supply/BAT0/status`
+		battery=`cat /sys/class/power_supply/BAT0/capacity`
 		if [ "$charging_status" = "Discharging" ]; then
 			echo "  `outputDisChargingIcon $battery`  $battery%  "
 		elif [ "$charging_status" = "Charging" ]; then
 			echo "  `outputChargingIcon $battery`  $battery%  "
+		elif [ "$charging_status" = "Full" ]; then
+			echo "  `outputDisChargingIcon $battery`  $battery%  "
 		fi
 	fi
 
