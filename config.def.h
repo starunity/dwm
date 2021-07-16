@@ -43,7 +43,12 @@ static const char *const autostart[] = {
     "fcitx5", NULL,
     "amixer", "set", "Master", "mute", NULL,
     "/home/star/.config/dwm-scripts/dwm-statusbar-autorefresh.sh", NULL,
+    "blueman-applet", NULL,
+    "copyq", NULL,
+    "albert", NULL,
     "xss-lock", "--", "betterlockscreen", "-l", "dim", NULL,
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
+    "kdeconnect-indicator", NULL,
     NULL /* terminate */
 };
 
