@@ -43,6 +43,7 @@ static const char *const autostart[] = {
     "fcitx5", NULL,
     "amixer", "set", "Master", "mute", NULL,
     "/home/star/.config/dwm-scripts/dwm-statusbar-autorefresh.sh", NULL,
+    "xss-lock", "--", "betterlockscreen", "-l", "dim", NULL,
     NULL /* terminate */
 };
 
@@ -103,6 +104,8 @@ static const char *screenkeytoggle[] = { "/home/star/.config/dwm-scripts/dwm-scr
 
 static const char *screenshot[]      = { "flameshot", "gui", NULL };
 
+static const char *lockscreen[]      = { "loginctl", "lock-session", NULL };
+
 static Key keys[] = {
     /* modifier                     key                       function        argument */
     { MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
@@ -117,6 +120,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_t,                     spawn,          {.v = trayertoggle } },
     { MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = screenkeytoggle } },
     { MODKEY|ShiftMask,             XK_a,                     spawn,          {.v = screenshot } },
+    { MODKEY,                       XK_x,                     spawn,          {.v = lockscreen } },
     { MODKEY,                       XK_y,                     togglescratch,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_b,                     togglebar,      {0} },
     { MODKEY|ShiftMask,             XK_j,                     rotatestack,    {.i = +1 } },
