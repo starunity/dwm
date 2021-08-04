@@ -61,11 +61,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,            1,           1,           -1,       's' },
-    { NULL,       "qq.exe",   NULL,       0,            0,           1,           -1,        0  },
-    { "flameshot",NULL,       NULL,       0,            0,           1,           -1,        0  },
+	/* class      instance    title            tags mask     iscentered   isfloating   monitor    scratch key */
+	{ "Gimp",     NULL,       NULL,            0,            0,           1,           -1,        0  },
+	{ NULL,       NULL,   "scratchpad",        0,            1,           1,           -1,       's' },
+	{ NULL,       NULL,   "scratchpadranger",  0,            1,           1,           -1,       'r' },
+	{ NULL,       NULL,   "KeePassXC",         0,            1,           1,           -1,       'k' },
+    { NULL,       "qq.exe",   NULL,            0,            0,           1,           -1,        0  },
+    { "flameshot",NULL,       NULL,            0,            0,           1,           -1,        0  },
 };
 
 /* layout(s) */
@@ -111,7 +113,9 @@ static const char *screenshot[]      = { "flameshot", "gui", NULL };
 static const char *lockscreen[]      = { "loginctl", "lock-session", NULL };
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[]   = {"s", "st", "-t", "scratchpad", NULL}; 
+static const char *scratchpadcmd[]      = {"s", "st", "-t", "scratchpad", "-g", "120x34", NULL}; 
+static const char *scratchpadranger[]   = {"r", "st", "-t", "scratchpadranger", "-g", "120x34", "-e", "ranger", NULL}; 
+static const char *scratchpadkeepass[]  = {"k", "keepassxc", NULL}; 
 
 static Key keys[] = {
     /* modifier                     key                       function        argument */
@@ -146,7 +150,9 @@ static Key keys[] = {
     { MODKEY,                       XK_space,                 setlayout,      {0} },
     { MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },
     { MODKEY|ShiftMask,             XK_f,                     togglefullscr,  {0} },
-	{ MODKEY,                       XK_y,                 togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_y,                     togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_u,                     togglescratch,  {.v = scratchpadranger } },
+	{ MODKEY,                       XK_o,                     togglescratch,  {.v = scratchpadkeepass } },
     { MODKEY,                       XK_0,                     view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,                     tag,            {.ui = ~0 } },
     { MODKEY,                       XK_comma,                 focusmon,       {.i = -1 } },
