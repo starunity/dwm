@@ -57,15 +57,16 @@ static const char *const autostart[] = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
-    /* xprop(1):
-     *  WM_CLASS(STRING) = instance, class
-     *  WM_NAME(STRING) = title
-     */
-    /* class      instance    title       tags mask     isfloating   monitor */
-    { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-    { NULL,       "qq.exe",   NULL,       0,            1,           -1 },
-    { "flameshot",NULL,       NULL,       0,            1,           -1 },
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
+	/* class      instance    title       tags mask     isfloating   monitor    scratch key */
+	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        0  },
+	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1,        0  },
+	{ NULL,       NULL,   "scratchpad",   0,            1,           -1,       's' },
+    { NULL,       "qq.exe",   NULL,       0,            1,           -1,        0  },
+    { "flameshot",NULL,       NULL,       0,            1,           -1,        0  },
 };
 
 /* layout(s) */
@@ -110,6 +111,9 @@ static const char *screenshot[]      = { "flameshot", "gui", NULL };
 
 static const char *lockscreen[]      = { "loginctl", "lock-session", NULL };
 
+/*First arg only serves to match against key in rules*/
+static const char *scratchpadcmd[]   = {"s", "st", "-t", "scratchpad", NULL}; 
+
 static Key keys[] = {
     /* modifier                     key                       function        argument */
     { MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
@@ -143,6 +147,7 @@ static Key keys[] = {
     { MODKEY,                       XK_space,                 setlayout,      {0} },
     { MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },
     { MODKEY|ShiftMask,             XK_f,                     togglefullscr,  {0} },
+	{ MODKEY,                       XK_y,                 togglescratch,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_0,                     view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,                     tag,            {.ui = ~0 } },
     { MODKEY,                       XK_comma,                 focusmon,       {.i = -1 } },
