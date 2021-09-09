@@ -50,6 +50,7 @@ static const char *const autostart[] = {
     "xss-lock", "--", "betterlockscreen", "-l", "dim", NULL,
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
     "kdeconnect-indicator", NULL,
+    "udiskie", "--tray", NULL,
     NULL /* terminate */
 };
 
