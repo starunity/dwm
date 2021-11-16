@@ -44,10 +44,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask  iscentered   isfloating   monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,       0,         0,           1,           -1,        0  },
-	{ "firefox",  NULL,       NULL,       1 << 8,    0,           0,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,         0,           1,           -1,       's' },
+	/* class      instance    title            tags mask  iscentered   isfloating   monitor    scratch key */
+	{ "Gimp",     NULL,       NULL,            0,         0,           1,           -1,        0  },
+	{ NULL,       NULL,   "scratchpad",        0,         1,           1,           -1,       's' },
+	{ NULL,       NULL,   "scratchpadranger",  0,         1,           1,           -1,       'r' },
+	{ NULL,       NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
+    { "flameshot",NULL,       NULL,            0,         0,           1,           -1,        0  },
 };
 
 /* layout(s) */
@@ -80,13 +82,17 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL}; 
+static const char *scratchpadcmd[]     = {"s", "st", "-t", "scratchpad", "-g", "120x34", NULL};
+static const char *scratchpadranger[]  = {"r", "st", "-t", "scratchpadranger", "-g", "120x34", "-e", "ranger", NULL};
+static const char *scratchpadkeepass[] = {"k", "keepassxc", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_u,      togglescratch,  {.v = scratchpadranger } },
+	{ MODKEY,                       XK_o,      togglescratch,  {.v = scratchpadkeepass } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
