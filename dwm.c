@@ -431,7 +431,8 @@ buttonpress(XEvent *e)
 		focus(NULL);
 	}
 	if (ev->window == selmon->barwin) {
-		i = x = 0;
+		i = 0;
+        x = ltagpad;
 		do
 			x += TEXTW(tags[i]);
 		while (ev->x >= x && ++i < LENGTH(tags));
@@ -715,6 +716,13 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+
+    if (ltagpad) {
+        drw_setscheme(drw, scheme[SchemeNorm]);
+        drw_text(drw, x, 0, ltagpad, bh, lrpad / 2, "", 0);
+        x += ltagpad;
+    }
+
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
