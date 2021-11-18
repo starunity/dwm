@@ -474,7 +474,8 @@ buttonpress(XEvent *e)
 		focus(NULL);
 	}
 	if (ev->window == selmon->barwin) {
-		i = x = 0;
+		i = 0;
+        x = ltagpad;
 		for (c = m->clients; c; c = c->next)
 			occ |= c->tags == 255 ? 0 : c->tags;
 		do {
@@ -780,6 +781,13 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+
+    if (ltagpad) {
+        drw_setscheme(drw, scheme[SchemeNorm]);
+        drw_text(drw, x, 0, ltagpad, bh, lrpad / 2, "", 0);
+        x += ltagpad;
+    }
+
 	for (i = 0; i < LENGTH(tags); i++) {
 		/* do not draw vacant tags */
 		if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
