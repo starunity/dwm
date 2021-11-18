@@ -47,12 +47,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title            tags mask  iscentered   isfloating   monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,            0,         0,           1,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",        0,         1,           1,           -1,       's' },
-	{ NULL,       NULL,   "scratchpadranger",  0,         1,           1,           -1,       'r' },
-	{ NULL,       NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
-    { "flameshot",NULL,       NULL,            0,         0,           1,           -1,        0  },
+	/* class        instance    title            tags mask  iscentered   isfloating   monitor    scratch key */
+	{ "Gimp",       NULL,       NULL,            0,         0,           1,           -1,        0  },
+	{ NULL,         NULL,   "scratchpad",        0,         1,           1,           -1,       's' },
+	{ NULL,         NULL,   "scratchpadranger",  0,         1,           1,           -1,       'r' },
+	{ NULL,         NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
+    { "flameshot",  NULL,       NULL,            0,         0,           1,           -1,        0  },
+    { "Wrapper-2.0",NULL,       NULL,            0,         0,           1,           -1,        0  },
 };
 
 /* layout(s) */
