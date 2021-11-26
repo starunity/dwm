@@ -55,6 +55,8 @@ static const Rule rules[] = {
 	{ NULL,         NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
     { "flameshot",  NULL,       NULL,            0,         0,           1,           -1,        0  },
     { "Wrapper-2.0",NULL,       NULL,            0,         0,           1,           -1,        0  },
+    { "notion-snap",NULL,       NULL,            0,         1,           1,           -1,       'n' },
+    { "Thunderbird",NULL,       NULL,            1 << 8,    0,           0,           -1,       't' },
 };
 
 /* layout(s) */
@@ -90,6 +92,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *scratchpadcmd[]     = {"s", "st", "-t", "scratchpad", "-g", "120x34", NULL};
 static const char *scratchpadranger[]  = {"r", "st", "-t", "scratchpadranger", "-g", "120x34", "-e", "ranger", NULL};
 static const char *scratchpadkeepass[] = {"k", "keepassxc", NULL};
+static const char *scratchpadnotion[]  = {"n", "notion", NULL};
+static const char *scratchpadthunderbird[] = {"t", "thunderbird", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,7 +101,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_u,      togglescratch,  {.v = scratchpadranger } },
-	{ MODKEY,                       XK_o,      togglescratch,  {.v = scratchpadkeepass } },
+	{ MODKEY,                       XK_v,      togglescratch,  {.v = scratchpadkeepass } },
+	{ MODKEY,                       XK_n,      togglescratch,  {.v = scratchpadnotion } },
+	{ MODKEY,                       XK_g,      togglescratch,  {.v = scratchpadthunderbird } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
