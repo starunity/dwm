@@ -55,7 +55,6 @@ static const Rule rules[] = {
 	{ NULL,         NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
     { "flameshot",  NULL,       NULL,            0,         0,           1,           -1,        0  },
     { "Wrapper-2.0",NULL,       NULL,            0,         0,           1,           -1,        0  },
-    { "notion-snap",NULL,       NULL,            0,         1,           1,           -1,       'n' },
     { "Thunderbird",NULL,       NULL,            1 << 8,    0,           0,           -1,       't' },
 };
 
