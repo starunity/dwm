@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+#define ICONSIZE 28   /* icon size */
+#define ICONSPACING 6 /* space between icon and title */
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
