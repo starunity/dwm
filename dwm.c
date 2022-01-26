@@ -2000,9 +2000,9 @@ updatebars(void)
 		                          CWOverrideRedirect|CWBackPixel|CWBorderPixel|CWColormap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
 		XMapRaised(dpy, m->barwin);
-		m->tabwin = XCreateWindow(dpy, root, m->wx, m->ty, m->ww, th, 0, DefaultDepth(dpy, screen),
-						CopyFromParent, DefaultVisual(dpy, screen),
-						CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
+		m->tabwin = XCreateWindow(dpy, root, m->wx, m->ty, m->ww, th, 0, depth,
+		                          InputOutput, visual,
+		                          CWOverrideRedirect|CWBackPixel|CWBorderPixel|CWColormap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->tabwin, cursor[CurNormal]->cursor);
 		XMapRaised(dpy, m->tabwin);
 		XSetClassHint(dpy, m->barwin, &ch);
