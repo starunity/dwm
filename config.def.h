@@ -15,6 +15,8 @@ static const int toptab				= False;               /* False means bottom tab bar 
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const int focusonwheel       = 0;
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+#define ICONSIZE 16   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
