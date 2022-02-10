@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
-#define ICONSIZE 16   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSIZE 28   /* icon size */
+#define ICONSPACING 6 /* space between icon and title */
 
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
 /*  monocle mode in the presence of several windows.                        */
@@ -9,8 +9,8 @@
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
 
 /* appearance */
-static const unsigned int borderpx    = 1;            /* border pixel of windows */
-static const unsigned int gappx       = 5;            /* gaps between windows */
+static const unsigned int borderpx    = 2;            /* border pixel of windows */
+static const unsigned int gappx       = 9;            /* gaps between windows */
 static const unsigned int snap        = 32;           /* snap pixel */
 static const int showbar              = 1;            /* 0 means no bar */
 static const int topbar               = 1;            /* 0 means bottom bar */
@@ -18,30 +18,35 @@ static const int showtab              = showtab_auto; /* Default tab bar show mo
 static const int toptab               = False;        /* False means bottom tab bar */
 static const Bool viewontag           = True;         /* Switch view on tag switch */
 static const int focusonwheel         = 0;
-static const int user_bh              = 0;            /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]            = { "monospace:size=10" };
-static const char dmenufont[]         = "monospace:size=10";
+static const int user_bh              = 42;           /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]            = { "Noto Sans CJK SC:style=Regular:size=12", "Symbols Nerd Font:style=2048-em:size=14" };
+static const char dmenufont[]         = "Noto Sans CJK SC:style=Regular:size=12";
 static const char col_gray1[]         = "#222222";
 static const char col_gray2[]         = "#444444";
 static const char col_gray3[]         = "#bbbbbb";
 static const char col_gray4[]         = "#eeeeee";
-static const char col_cyan[]          = "#005577";
+static const char col_cyan[]          = "#444444";
 static const unsigned int baralpha    = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*                   fg         bg         border   */
 	[SchemeNorm]     = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]      = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus]   = { col_gray3, col_gray1, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm] = { col_gray3, col_gray1, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_gray4, col_cyan,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm] = { col_gray3, col_gray1, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeSel]      = { col_gray4, col_cyan,  "#1793D1" },
+	[SchemeStatus]   = { col_gray3, col_gray1, "#000000" }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000" }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm] = { col_gray3, col_gray1, "#000000" }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_gray4, col_gray1, "#000000" }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm] = { col_gray3, col_gray1, "#000000" }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 static const unsigned int alphas[][3] = {
-	/*               fg      bg        border     */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	/*                   fg      bg        border     */
+	[SchemeNorm]     = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]      = { OPAQUE, baralpha, borderalpha },
+	[SchemeStatus]   = { OPAQUE, baralpha, borderalpha }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { OPAQUE, baralpha, borderalpha }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -52,10 +57,13 @@ static const Rule rules[] = {
 	 * WM_CLASS(STRING) = instance, class
 	 * WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask   iscentered   isfloating   monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,       0,          0,           1,           -1,        0  },
-	{ "firefox",  NULL,       NULL,       1 << 8,     0,           0,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,          0,           1,           -1,       's' },
+	/* class        instance    title            tags mask  iscentered   isfloating   monitor    scratch key */
+	{ "Gimp",       NULL,       NULL,            0,         0,           1,           -1,        0  },
+	{ NULL,         NULL,   "scratchpad",        0,         1,           1,           -1,       's' },
+	{ NULL,         NULL,   "scratchpadranger",  0,         1,           1,           -1,       'r' },
+	{ NULL,         NULL,   "KeePassXC",         0,         1,           1,           -1,       'k' },
+	{ "flameshot",  NULL,       NULL,            0,         0,           1,           -1,        0  },
+	{ "Thunderbird",NULL,       NULL,            1 << 8,    0,           0,           -1,       't' },
 };
 
 /* layout(s) */
@@ -72,7 +80,7 @@ static const Layout layouts[]   = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -87,14 +95,23 @@ static char dmenumon[2]       = "0"; /* component of dmenucmd, manipulated in sp
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *lockcmd[]  = { "light-locker-command", "-l", NULL };
+
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL}; 
+static const char *scratchpadcmd[]         = {"s", "st", "-t", "scratchpad", "-g", "120x34", NULL};
+static const char *scratchpadranger[]      = {"r", "st", "-t", "scratchpadranger", "-g", "120x34", "-e", "ranger", NULL};
+static const char *scratchpadkeepass[]     = {"k", "keepassxc", NULL};
+static const char *scratchpadthunderbird[] = {"t", "thunderbird", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_y,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_u,      togglescratch,  {.v = scratchpadranger } },
+	{ MODKEY,                       XK_v,      togglescratch,  {.v = scratchpadkeepass } },
+	{ MODKEY,                       XK_g,      togglescratch,  {.v = scratchpadthunderbird } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_w,      tabmode,        {-1} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
@@ -105,9 +122,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -132,7 +149,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
 /* button definitions */
